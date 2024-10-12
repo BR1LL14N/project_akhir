@@ -1,10 +1,11 @@
 <?php 
 
-if(!empty($obj_role)){
+// PENEGCEKAN OBJECT KOSONG ATAU TIDAK
+// if(!empty($obj_role)){
     include_once './init.php';
-}else{
-    include_once './respon_input.php';
-}
+// }else{
+    // include_once __DIR__.'/../respon_input.php';
+// }
 
 
 ?>
