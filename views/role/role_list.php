@@ -1,3 +1,13 @@
+<?php 
+
+if(!empty($obj_role)){
+    include_once './init.php';
+}else{
+    include_once './respon_input.php';
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

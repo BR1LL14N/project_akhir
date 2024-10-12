@@ -3,7 +3,7 @@
     <ul class="mt-4 space-y-2">
         <li class="group">
             <div class="px-4 py-2 hover:bg-gray-700 cursor-pointer group-hover:bg-gray-700">
-                <a href="/frontend-master/views/role/role_list.php">Master Data Role</a>
+                <a href="./views/role/role_list.php">Master Data Role</a>
             </div>
 <!--            <ul class="ml-4 space-y-1 hidden group-hover:block">-->
 <!--                <li class="px-4 py-2 hover:bg-gray-700 cursor-pointer">List</li>-->
@@ -24,7 +24,7 @@
 <!--            </ul>-->
         </li>
         <li class="group">
-            <div class="px-4 py-2 hover:bg-gray-700 cursor-pointer group-hover:bg-gray-700"> <a href="/frontend-master/views/role/role_barang.php">Master Data Barang</a></div>
+            <div class="px-4 py-2 hover:bg-gray-700 cursor-pointer group-hover:bg-gray-700"> <a href="./views/role/role_barang.php">Master Data Barang</a></div>
 <!--            <ul class="ml-4 space-y-1 hidden group-hover:block">-->
 <!--                <li class="px-4 py-2 hover:bg-gray-700 cursor-pointer">List</li>-->
 <!--                <li class="px-4 py-2 hover:bg-gray-700 cursor-pointer">Insert</li>-->

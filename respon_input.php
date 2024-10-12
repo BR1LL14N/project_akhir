@@ -1,6 +1,6 @@
 <?php
 
-// require_once 'init.php';
+require_once 'init.php';
 require_once 'domain-object/node-role.php';
 $role_name = $_POST['role_name'];
 $role_description = $_POST['role_description'];
