@@ -1,19 +1,18 @@
 <?php
-class Role{
-    public $role_id;
-    public $role_name;
-    public $role_description;
-    public $role_status;
+
+class role{
+
+    public $id_peran;
+    public $nama_peran;
+    public $desc_peran;
+    public $status_peran;
     public $gaji;
 
-    public function __construct($role_id,$role_name,$role_description,$role_status, $gaji){
-        $this->role_id = $role_id;
-        $this->role_name = $role_name;
-        $this->role_description = $role_description;
-        $this->role_status = $role_status;
+    function __construct($id_peran, $nama_peran, $desc_peran, $status_peran, $gaji){
+        $this->id_peran = $id_peran;
+        $this->nama_peran = $nama_peran;
+        $this->desc_peran = $desc_peran;
+        $this->status_peran = $status_peran;
         $this->gaji = $gaji;
-        
     }
 }
-
-?>

@@ -1,11 +1,11 @@
-
 <div class="w-64 bg-gray-800 text-gray-100 h-screen">
     <div class="p-4 font-bold text-lg">Menu</div>
     <ul class="mt-4 space-y-2">
         <li class="group">
-            <div class="px-4 py-2 hover:bg-gray-700 cursor-pointer group-hover:bg-gray-700">
-                <a href="./views/role/role_list.php">Master Data Role</a>
+            <a href="index.php">
+            <div class="px-4 py-2 hover:bg-gray-700 cursor-pointer group-hover:bg-gray-700">Master Data Role
             </div>
+        </a>
 <!--            <ul class="ml-4 space-y-1 hidden group-hover:block">-->
 <!--                <li class="px-4 py-2 hover:bg-gray-700 cursor-pointer">List</li>-->
 <!--                <li class="px-4 py-2 hover:bg-gray-700 cursor-pointer">Insert</li>-->
@@ -25,7 +25,9 @@
 <!--            </ul>-->
         </li>
         <li class="group">
-            <div class="px-4 py-2 hover:bg-gray-700 cursor-pointer group-hover:bg-gray-700"> <a href="./views/role/role_barang.php">Master Data Barang</a></div>
+            <a href="index_barang.php">
+            <div class="px-4 py-2 hover:bg-gray-700 cursor-pointer group-hover:bg-gray-700">Master Data Barang</div>
+            </a>
 <!--            <ul class="ml-4 space-y-1 hidden group-hover:block">-->
 <!--                <li class="px-4 py-2 hover:bg-gray-700 cursor-pointer">List</li>-->
 <!--                <li class="px-4 py-2 hover:bg-gray-700 cursor-pointer">Insert</li>-->
