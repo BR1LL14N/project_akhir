@@ -49,6 +49,9 @@ class Role_model{
 
     public function updateRole($role_id, $role_name, $role_description, $role_status, $role_gaji){
         $role = $this->getRoleById($role_id);
+        if(!$role){
+            return false;
+        }
         $role->nama_peran = $role_name;
         $role->deskripsi_peran = $role_description;
         $role->status_peran = $role_status;
