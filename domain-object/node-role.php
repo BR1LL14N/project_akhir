@@ -16,3 +16,6 @@ class role{
         $this->gaji = $gaji;
     }
 }
+
+
+?>
