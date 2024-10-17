@@ -15,6 +15,7 @@ class role{
         $this->status_peran = $status_peran;
         $this->gaji = $gaji;
     }
+
 }
 
 
