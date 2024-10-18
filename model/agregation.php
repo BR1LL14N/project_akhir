@@ -38,8 +38,6 @@ class userModel{
         if(isset($_SESSION['roles'])){
             $this->listUser = unserialize($_SESSION['roles']);
             $this->id = count($this->listUser) + 1;    
-        }else{
-            $this->initializeDefault();
         }
     }
 

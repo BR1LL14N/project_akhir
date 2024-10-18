@@ -1,6 +1,6 @@
 <?php
 
-class role{
+class roleInheritance{
 
     public $id_peran;
     public $nama_peran;

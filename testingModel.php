@@ -1,7 +1,10 @@
 <?php
+session_start();
+session_destroy();
 // require_once './model/role_model.php';
 require_once './model/agregation.php';
-// require_once './model/inherintence.php';
+require_once './model/composite.php';
+require_once './model/inherintence.php';
 
 // $obj_role = new Role_model();
 
@@ -38,11 +41,29 @@ $obj_user->updateUserModelByID(2, "Mahfud", "super admin", "Active", 1000000, "b
 $obj_user->cetakModel();
 
 
-// echo "<br>";
-// echo "============= AREA TESTING INHAROTANCE ==============";
-// echo "<br>";
+echo "<br>";
+echo "============= AREA TESTING INHARiTANCE ==============";
+echo "<br>";
+$obj_user= [];
 
-// $obj_user = new User("Brilian", "Nganggur", "Active", 1000000);
-// $obj_user->Cetak();
+$obj_user[] = new UserInheritance("Brilian", "Nganggur", "Active", 1000000, "Belajar");
+$obj_user[] = new UserInheritance("Aril", "Makan", "Active", 1000000, "Membaca");
+$obj_user[] = new UserInheritance("Rizam", "Minum", "Active", 1000000, "Menyanyi");
 
+foreach($obj_user as $user){
+    $user->CetakPenggunaInheritance();
+}
+
+
+
+
+echo "<br>";
+echo "============= AREA TESTING COMPOSITE ==============";
+echo "<br>";
+
+$obj_user = new userPengguna();
+$obj_user->addUser("Brilian", "Nganggur", "Active", 1000000, "Belajar");
+$obj_user->addUser("Aril", "Makan", "Active", 1000000, "Membaca");
+$obj_user->addUser("Rizam", "Minum", "Active", 1000000, "Menyanyi");
+$obj_user->cetakPengguna();
 ?>
