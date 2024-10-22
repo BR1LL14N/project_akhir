@@ -1,6 +1,7 @@
 <?php
 require_once 'domain-object/node-testing-inheritance.php';
 
+// DIBAWAH INI MERUPAKAN CHILD CLASS DARI PARRENT CLASS NYA
 class UserInheritance extends roleInheritance{
     public $hobiModel;
     public static $id = 1;

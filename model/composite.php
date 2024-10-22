@@ -7,7 +7,10 @@ class UserComposite{
 
     public function __construct($id,$nama, $desc_peran, $status_peran, $gaji, $hobi){
         $this->role = new roleComposite();
-        // BAGIAN COMPOSITE DIDALAMAN CLASS INI
+        // BAGIAN COMPOSITE DIDALAMAN CLASS INI JADI KARENA
+        // KITA MENGINISIALISASI CLASS ROLE YANG DIMANANA CONSTRUCTNYA
+        // TIDAK MEMINTA PARAMETER APA APA LALU KITA ISI
+        // DATA NYA SECARA MANUAL SATU SATU 
         $this->role->id_peran = $id;
         $this->role->nama_peran = $nama;
         $this->role->desc_peran = $desc_peran;
