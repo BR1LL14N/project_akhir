@@ -27,7 +27,7 @@ class Role_model{
         $_SESSION['roles'] = serialize($this->roles);
     }
 
-    public function getRole(){
+    public function getRoles(){
         return $this->roles;
     }
 
