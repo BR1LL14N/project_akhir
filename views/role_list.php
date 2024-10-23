@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +45,7 @@
                     </thead>
                     <tbody class="text-gray-700">
                     <!-- Static Data Rows -->
-                    <?php foreach ($obj_role as $role){?>
+                    <?php foreach ($roles as $role){?>
                     <tr class="text-center">
                         <td class="py-3 px-4 text-blue-600"><?php echo htmlspecialchars($role->id_peran) ?></td>
                         <td class="w-1/4 py-3 px-4"><?php echo htmlspecialchars($role->nama_peran) ?></td>

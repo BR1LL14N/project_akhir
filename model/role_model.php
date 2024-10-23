@@ -32,9 +32,9 @@ class Role_model{
     }
 
     public function InitialiazeDefaultRole(){
-        $this->addRole("Admin", "Administrator", "active", 10000000);
-        $this->addRole("User", "Customer/member", "active", 0);
-        $this->addRole("Kasir", "Pembayaran", "inactive", 0);
+        $this->addRole("Admin", "Administrator", 1, 10000000);
+        $this->addRole("User", "Customer/member", 0, 20000);
+        $this->addRole("Kasir", "Pembayaran", 1,100000);
     }
 
     public function getRoleById($role_id){

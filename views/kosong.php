@@ -20,15 +20,7 @@
         <!-- Main Content -->
         <div class="flex-1 p-8">
             <!-- Your main content goes here -->
-            <?php
-                foreach($obj_role as $role){
-                    echo "Role : ". $role->role_id."<br>";
-                    echo "Nama : ". $role->role_name."<br>";
-                    echo "Keterangan : ". $role->role_description."<br>";
-                    echo "Status : ". $role->role_status."<br>";
-                    echo "<hr>";
-                }
-            ?>
+            
         </div>
     </div>
 
