@@ -1,15 +1,17 @@
 <?php
+// MENG-START SESI
 session_start();
 include './model/role_model.php';
 
-
-
+// MENG-HANDLE REQUEST DARI 
 if(isset($_GET['modul'])){
     $modul = $_GET['modul'];
 } else{
     $modul = 'dashboard';
 }
 
+// HANDLE SWITCH BERDASARKAN $_GET[MODUL]
+// YANG SUDAH DIKIRIMKAN
 switch($modul){
     case 'dashboard':
         include 'views/kosong.php';
@@ -18,12 +20,6 @@ switch($modul){
     case 'role':
         $fitur = isset($_GET['fitur']) ? $_GET['fitur'] : null;
         $obj_roles = new Role_model();
-
-        // require_once './model/role_model.php';
-
-        // $roles = $obj_roles->getRoles();
-        // include_once 'views/role_list.php';
-
 
         switch($fitur){
             case 'add':
@@ -38,6 +34,21 @@ switch($modul){
                 header("Location: index.php?modul=role");
                 break;
             
+                case 'update':
+                    $role_id = $_POST['id_peran'];
+                    $role_name = $_POST['nama_peran'];
+                    $role_description = $_POST['desc_peran'];
+                    $role_status = $_POST['status_peran'];
+                    $gaji = $_POST['gaji'];
+                    $obj_roles->updateRole($role_id, $role_name, $role_description, $role_status, $gaji);
+                    header("Location: index.php?modul=role");
+                    break;
+
+                case 'delete':
+                    $role_id = $_POST['id_peran'];
+                    $obj_roles->deleteRole($role_id);
+                    header("Location: index.php?modul=role");
+                    break;
             default:
                 // $obj_role = new Role_model();
                 $roles = $obj_roles->getRoles();

@@ -53,9 +53,9 @@ class Role_model{
             return false;
         }
         $role->nama_peran = $role_name;
-        $role->deskripsi_peran = $role_description;
+        $role->desc_peran = $role_description;
         $role->status_peran = $role_status;
-        $role->gaji_peran = $role_gaji;
+        $role->gaji = $role_gaji;
         $this->saveToSesion();
         return true;
     }
