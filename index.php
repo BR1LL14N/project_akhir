@@ -34,14 +34,23 @@ switch($modul){
                 header("Location: index.php?modul=role");
                 break;
             
+                case 'edit':
+                    $role_id = $_GET['id'];
+                    $obj_roles = new Role_model();
+                    $role = $obj_roles->getRoleById($role_id);
+                    include './views/role_update.php';
+                    break;
+
                 case 'update':
-                    $role_id = $_POST['id_peran'];
-                    $role_name = $_POST['nama_peran'];
-                    $role_description = $_POST['desc_peran'];
-                    $role_status = $_POST['status_peran'];
-                    $gaji = $_POST['gaji'];
-                    $obj_roles->updateRole($role_id, $role_name, $role_description, $role_status, $gaji);
-                    header("Location: index.php?modul=role");
+                    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                        $role_id = $_POST['id_peran'];
+                        $role_name = $_POST['nama_peran'];
+                        $role_description = $_POST['desc_peran'];
+                        $role_status = $_POST['status_peran'];
+                        $gaji = $_POST['gaji'];
+                        $obj_roles->updateRole($role_id, $role_name, $role_description, $role_status, $gaji);
+                        header("Location: index.php?modul=role");
+                    }
                     break;
 
                 case 'delete':
