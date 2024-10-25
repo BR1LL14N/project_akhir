@@ -49,14 +49,20 @@ switch($modul){
                         $role_status = $_POST['status_peran'];
                         $gaji = $_POST['gaji'];
                         $obj_roles->updateRole($role_id, $role_name, $role_description, $role_status, $gaji);
-                        header("Location: index.php?modul=role");
+                        echo "<script>
+                                alert('Data berhasil diupdate!');
+                                window.location.href = 'index.php?modul=role';
+                            </script>";
                     }
                     break;
 
                 case 'delete':
                     $role_id = $_GET['id'];
                     $obj_roles->deleteRole($role_id);
-                    header("Location: index.php?modul=role");
+                    echo "<script>
+                                alert('Data berhasil di delete');
+                                window.location.href = 'index.php?modul=role';
+                            </script>";
                     break;
             default:
                 // $obj_role = new Role_model();
