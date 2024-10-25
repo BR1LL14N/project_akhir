@@ -45,7 +45,7 @@ switch($modul){
                     break;
 
                 case 'delete':
-                    $role_id = $_POST['id_peran'];
+                    $role_id = $_GET['id'];
                     $obj_roles->deleteRole($role_id);
                     header("Location: index.php?modul=role");
                     break;
