@@ -44,12 +44,12 @@
                     <thead class="bg-gray-800 text-white">
 
                     <tr>
-                        <th class="w-1/12 py-3 px-4 uppercase font-semibold text-sm">Role ID</th>
-                        <th class="w-1/4 py-3 px-4 uppercase font-semibold text-sm">Role Name</th>
-                        <th class="w-1/3 py-3 px-4 uppercase font-semibold text-sm">Role Description</th>
-                        <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Role Status</th>
-                        <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Gaji</th>
-                        <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Actions</th>
+                        <th class="w-1/12 py-3 px-4 font-semibold text-sm">ID</th>
+                        <th class="w-1/4 py-3 px-4 font-semibold text-sm">Role</th>
+                        <th class="w-1/3 py-3 px-4 font-semibold text-sm">Description</th>
+                        <th class="w-1/6 py-3 px-4 font-semibold text-sm">Status</th>
+                        <th class="w-1/6 py-3 px-4 font-semibold text-sm">Gaji</th>
+                        <th class="w-1/6 py-3 px-4 font-semibold text-sm">Actions</th>
                     </tr>
 
                     </thead>

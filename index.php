@@ -48,11 +48,20 @@ switch($modul){
                         $role_description = $_POST['desc_peran'];
                         $role_status = $_POST['status_peran'];
                         $gaji = $_POST['gaji'];
-                        $obj_roles->updateRole($role_id, $role_name, $role_description, $role_status, $gaji);
-                        echo "<script>
+                        $result = $obj_roles->updateRole($role_id, $role_name, $role_description, $role_status, $gaji);
+
+                        if($result){
+                            echo "<script>
                                 alert('Data berhasil diupdate!');
                                 window.location.href = 'index.php?modul=role';
                             </script>";
+                        }else{
+                            echo "<script>
+                                alert('Data gagal diupdate!');
+                                window.location.href = 'index.php?modul=role';
+                            </script>";
+                        }
+                        
                     }
                     break;
 
@@ -64,6 +73,7 @@ switch($modul){
                                 window.location.href = 'index.php?modul=role';
                             </script>";
                     break;
+
             default:
                 // $obj_role = new Role_model();
                 $roles = $obj_roles->getRoles();
@@ -71,6 +81,19 @@ switch($modul){
                 break;
             }
             break;
-        
+
+    case 'user':
+        $fitur = isset($_GET['fitur']) ? $_GET['fitur'] : null;
+        switch($fitur){
+            case 'add':
+                include './views/user_input.php';
+                break;
+            case 'edit':
+                include './views/user_update.php';
+                break;
+            default:
+                include './views/user_list.php';
+                break;
+        }
 }
 ?>
