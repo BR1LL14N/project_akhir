@@ -1,5 +1,6 @@
 <?php
 require_once './domain-object/node-role.php';
+// require_once 'user_model.php';
 
 class Role_model{
     private $roles = [];
@@ -18,6 +19,7 @@ class Role_model{
     public function addRole($role_name, $role_description, $role_status, $role_gaji){
         // DISINI LAHHH NODE ROLE BERGUNA DAN SEBENARNYA DI BAGIAN INI
         // KONSEP AGRREGATION SUDAH BERHASIL DIIMPLEMENTASIKAN
+        
         $peran = new role($this->nextId++, $role_name, $role_description, $role_status, $role_gaji);
         $this->roles[] = $peran;
         $this->saveToSesion(); 
