@@ -43,7 +43,7 @@
 <!--            </ul>-->
         </li>
         <li class="group">
-            <a href="index_barang.php">
+            <a href="index.php?modul=barang">
                 <div class="px-4 py-2 hover:bg-gray-700 cursor-pointer group-hover:bg-gray-700 flex items-center">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.45001 9.23038H17.55C18.0407 9.23038 18.5112 9.4252 18.8582 9.77199C19.2051 10.1188 19.4 10.5891 19.4 11.0796V17.5517C19.4 18.5325 19.0102 19.4732 18.3163 20.1668C17.6224 20.8604 16.6813 21.25 15.7 21.25H8.30001C7.31871 21.25 6.3776 20.8604 5.68371 20.1668C4.98983 19.4732 4.60001 18.5325 4.60001 17.5517V11.0796C4.60001 10.5891 4.79492 10.1188 5.14186 9.77199C5.4888 9.4252 5.95936 9.23038 6.45001 9.23038Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

@@ -66,7 +66,40 @@ class User_model{
         return $this->users;
     }
 
-    
+    public function updateUser($userID,$username, $nameRole){
+        $role = $this->roleModel->getRoleByName($nameRole);
+        if(!$role){
+            echo "<script>
+            alert('Role Tidak Ditemukan Kocak!');
+            </script>";
+            return false;
+        }
+        if($role->status_peran == 'inactive'){
+            echo "<script>
+            alert('Role Tidak Aktif Kocak!');
+            </script>";
+            return false;
+        }
+        foreach($this->users as $key => $user){
+            if($user->userId == $userID){
+                $user->username = $username;
+                $user->allDataRole = $role;
+                // $this->users[$key] = new User($user->userId, $user->username, $role);
+                $this->saveToSession();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function getUserById($id){
+        foreach($this->users as $user){
+            if($user->userId == $id){
+                return $user;
+            }
+        }
+        return false;
+    }
 
 }
 
