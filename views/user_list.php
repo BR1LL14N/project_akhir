@@ -88,7 +88,7 @@
                                     </a>
                                 </button>
                                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
-                                    <a href="MainEntryPoint.php?modul=role&fitur=delete&id=<?php echo htmlspecialchars($user->userId); ?>">
+                                    <a href="index.php?modul=user&fitur=delete&id=<?php echo htmlspecialchars($user->userId); ?>">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M5.47058 6.01471V18.5294C5.47058 19.251 5.75721 19.943 6.26742 20.4532C6.77763 20.9634 7.46962 21.25 8.19117 21.25H15.8088C16.5304 21.25 17.2224 20.9634 17.7326 20.4532C18.2428 19.943 18.5294 19.251 18.5294 18.5294V6.01471" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                             <path d="M3.29413 6.01471H20.7059" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

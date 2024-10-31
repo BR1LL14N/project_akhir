@@ -34,7 +34,7 @@ class User_model{
             return false;
         }
 
-        if($role->status_peran == 'inactive'){
+        if($role->status_peran == 0){
             echo "<script>
             alert('Role Tidak Aktif Kocak!');
             </script>";
@@ -74,7 +74,7 @@ class User_model{
             </script>";
             return false;
         }
-        if($role->status_peran == 'inactive'){
+        if($role->status_peran == 0){
             echo "<script>
             alert('Role Tidak Aktif Kocak!');
             </script>";
@@ -96,6 +96,18 @@ class User_model{
         foreach($this->users as $user){
             if($user->userId == $id){
                 return $user;
+            }
+        }
+        return false;
+    }
+
+
+    public function deleteUser($id){
+        foreach($this->users as $key => $user){
+            if($user->userId == $id){
+                unset($this->users[$key]);
+                $this->saveToSession();
+                return true;
             }
         }
         return false;

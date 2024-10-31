@@ -145,6 +145,21 @@ switch($modul){
                         </script>";
                     }
                 }
+
+            case 'delete':
+                $userID = $_GET['id']; // Ambil ID pengguna dari URL
+                if ($users->deleteUser ($userID)) { // Panggil method deleteUser 
+                    echo "<script>
+                        alert('Pengguna berhasil dihapus!');
+                        window.location.href = 'index.php?modul=user';
+                    </script>";
+                } else {
+                    echo "<script>
+                        alert('Pengguna tidak ditemukan atau gagal dihapus!');
+                        window.location.href = 'index.php?modul=user';
+                    </script>";
+                }
+                break;
             default:
 
                 $users = $users->getAllUsers();
@@ -159,9 +174,9 @@ switch($modul){
     
             switch ($fitur) {
                 case 'add':
-                    $nama = $_POST['nama'];
-                    $harga = $_POST['harga'];
-                    $stok = $_POST['stok'];
+                    $nama = $_POST['nama_barang'];
+                    $harga = $_POST['harga_barang'];
+                    $stok = $_POST['jumlah_barang'];
                     $obj_barang->addBarang($nama, $harga, $stok);
     
                     header("Location: index.php?modul=barang");
