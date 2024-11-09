@@ -18,9 +18,20 @@ class User_model{
         // CEK APAKAH SESSION TERSEDIA
         if(isset($_SESSION['users'])){
             $this->users = unserialize($_SESSION['users']);
+            $this->nextID = $this->countID() + 1;
         }else{
             $this->InitilizedefaultUser();
         }
+    }
+
+    public function countID(){
+        $maxid = 0;
+        foreach($this->users as $user){
+            if($user->userId > $maxid){
+                $maxid = $user->userId;
+            }
+        }
+        return $maxid;
     }
 
     public function addUser($user, $nameRole){
@@ -41,8 +52,8 @@ class User_model{
             return false;
         }
 
-        $ID = count($this->users) + 1;
-        $this->users[] = new User($ID,$user, $role);
+        // $ID = count($this->users) + 1;
+        $this->users[] = new User($this->nextID++,$user, $role);
         $this->saveToSession();
         return true;
         

@@ -4,6 +4,8 @@ session_start();
 include './model/role_model.php';
 include './model/user_model.php';
 include './model/barang_model.php';
+include './model/detail_transaksi_model.php';
+include './model/transaksi_model.php';
 
 // MENG-HANDLE REQUEST DARI 
 if(isset($_GET['modul'])){
@@ -11,6 +13,14 @@ if(isset($_GET['modul'])){
 } else{
     $modul = 'dashboard';
 }
+
+$obj_roles = new Role_model();
+$obj_transaksi = new ModelTransaksi();
+$obj_barang = new modelBarang();
+$obj_user = new User_model();
+$obj_detail = new detailTransaksiModel();
+
+
 
 // HANDLE SWITCH BERDASARKAN $_GET[MODUL]
 // YANG SUDAH DIKIRIMKAN
@@ -21,7 +31,6 @@ switch($modul){
     
     case 'role':
         $fitur = isset($_GET['fitur']) ? $_GET['fitur'] : null;
-        $obj_roles = new Role_model();
 
         switch($fitur){
             case 'input':
@@ -170,7 +179,6 @@ switch($modul){
     
     case 'barang':
             $fitur = isset($_GET['fitur']) ? $_GET['fitur'] : null;
-            $obj_barang = new modelBarang();
     
             switch ($fitur) {
                 case 'add':
@@ -212,5 +220,48 @@ switch($modul){
                     break;
             }
             break;
-}
+    case 'transaksi':
+        $fitur = isset($_GET['fitur']) ? $_GET['fitur'] : null;
+            switch ($fitur) {
+                case 'input':
+                        $transaksis = $obj_transaksi->getAllTransaksi();
+                        $customers = $obj_user->getAllUsers();
+                        $barangs = $obj_barang->getAllBarangs();
+                        include './views/transaksi_input.php';
+                        break;
+        
+                case 'add':
+                    $user_id = $_POST['customer'];
+                    // $kasir_id = $_SESSION['username_login'];
+    
+                    $barang_ids = $_POST['barang'];
+                    $jumlahs = $_POST['jumlah'];
+    
+                    $detail_transaksis = [];
+                    foreach ($barang_ids as $key => $barang_id) {
+                        $barang = $obj_barang->getBarangById($barang_id);
+                        $id_transaksi = $obj_transaksi->getMaxTransaksiId();
+                        $detail_transaksi = new detailTransaksi($id_transaksi++, $barang, $jumlahs[$key], $obj_detail_transaksi->getSubtotal($barang_id, $jumlahs[$key]));
+                        $detail_transaksis[] = $detail_transaksi;
+                    }
+    
+                    if (!empty($detail_transaksis)) {
+                        $obj_transaksi->addTransaksi($user_id, $kasir_id->user_id, $detail_transaksis);
+                        header("Location: index.php?modul=transaksi");
+                    } else {
+                        echo "Detail transaksi tidak lengkap!";
+                        exit;
+                    }
+                    break;
+                        break;
+                    default:
+                        $transaksis = $obj_transaksi->getAllTransaksi();
+                        // echo "<pre>";
+                        // print_r($transaksis);
+                        // echo "</pre>";
+                        include 'views/transaksi_list.php';
+                        break;
+                }
+        }
+
 ?>

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+    <?php 
+        // var_dump($barangs)
+    ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +24,7 @@
         <div class="flex-1 p-8">
             <!-- Form Transaksi -->
             <h2 class="text-2xl font-bold mb-4">Transaksi Baru</h2>
-            <form action="MainEntryPoint.php?modul=transaksi&fitur=add" method="POST" id="transaksiForm">
+            <form action="./index.php?modul=transaksi&fitur=add" method="POST" id="transaksiForm">
                 <div class="mb-4">
                     <label for="customer" class="block text-gray-700">Customer</label>
                     <select id="customer" name="customer" class="mt-1 p-2 border border-gray-300 rounded w-1/3" required>
@@ -33,7 +36,11 @@
 //                        print_r($customers);
                         if (!empty($customers)) {
                             foreach ($customers as $customer) {
-                                echo "<option value='$customer->name'>$customer->name</option>";
+                                // HANYA ID KASIR YANG DIJINKAN
+                                if($customer->allDataRole->id_peran == 3){
+                                    echo "<option value='{$customer->userId}'>{$customer->username}</option>";
+
+                                }
                             }
                         }
                         ?>
@@ -56,13 +63,13 @@
 //                                        ['id' => 3, 'name' => 'Barang C', 'harga' => 120000],
 //                                    ];
                                     foreach ($barangs as $barang) {
-                                        echo "<option value='{$barang->idBarang}'>{$barang->nameBarang} - Rp{$barang->hargaBarang}</option>";
+                                        echo "<option value='{$barang->id_barang}'>{$barang->nama_barang} - Rp{$barang->harga_barang}</option>";
                                     }
                                     ?>
                                 </select>
                             </div>
                             <div>
-                                <label for="jumlah[]" class="block text-gray-700">Jumlah</label>
+                                <label class="block text-gray-700">Jumlah</label>
                                 <input type="number" name="jumlah[]" class="mt-1 p-2 border border-gray-300 rounded w-full" min="1" required>
                             </div>
                             <div>

@@ -67,7 +67,7 @@
             </div>
             <ul class="ml-4 space-y-1 hidden group-hover:block">
                 <li class="px-4 py-2 hover:bg-gray-700 cursor-pointer">
-                    <a href=#>Insert Transaksi</a>
+                    <a href="index.php?modul=transaksi&fitur=input">Insert Transaksi</a>
                 </li>
                 <li class="px-4 py-2 hover:bg-gray-700 cursor-pointer">
                     <a href=#>List Transaksi</a>
