@@ -232,28 +232,39 @@ switch($modul){
         
                 case 'add':
                     $user_id = $_POST['customer'];
-                    // $kasir_id = $_SESSION['username_login'];
-    
                     $barang_ids = $_POST['barang'];
                     $jumlahs = $_POST['jumlah'];
-    
                     $detail_transaksis = [];
+                    $nextId = 1; // Mulai ID dari 1 atau gunakan nilai yang sesuai untuk inisialisasi
+
                     foreach ($barang_ids as $key => $barang_id) {
                         $barang = $obj_barang->getBarangById($barang_id);
-                        $id_transaksi = $obj_transaksi->getMaxTransaksiId();
-                        $detail_transaksi = new detailTransaksi($id_transaksi++, $barang, $jumlahs[$key], $obj_detail_transaksi->getSubtotal($barang_id, $jumlahs[$key]));
+                        $subtotal = $obj_detail->getSubtotal($barang_id, $jumlahs[$key]);
+
+                        $detail_transaksi = new DetailTransaksi(
+                            $nextId++, // Menambahkan ID secara increment
+                            $barang,
+                            $jumlahs[$key],
+                            $subtotal
+                        );
                         $detail_transaksis[] = $detail_transaksi;
                     }
-    
+
                     if (!empty($detail_transaksis)) {
-                        $obj_transaksi->addTransaksi($user_id, $kasir_id->user_id, $detail_transaksis);
-                        header("Location: index.php?modul=transaksi");
+                        $obj_transaksi->addTransaksi($user_id, $detail_transaksis);
+                        header("Location: index.php?modul=transaksi&fitur=list");
                     } else {
                         echo "Detail transaksi tidak lengkap!";
                         exit;
                     }
                     break;
-                        break;
+                case 'list':
+                    $transaksis = $obj_transaksi->getAllTransaksi();
+                    // echo "<pre>";
+                    //     print_r($transaksis);
+                    //     echo "</pre>";
+                    include 'views/transaksi_list.php';
+                    break;
                     default:
                         $transaksis = $obj_transaksi->getAllTransaksi();
                         // echo "<pre>";

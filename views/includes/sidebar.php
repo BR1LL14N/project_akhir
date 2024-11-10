@@ -70,7 +70,7 @@
                     <a href="index.php?modul=transaksi&fitur=input">Insert Transaksi</a>
                 </li>
                 <li class="px-4 py-2 hover:bg-gray-700 cursor-pointer">
-                    <a href=#>List Transaksi</a>
+                    <a href="index.php?modul=transaksi&fitur=list">List Transaksi</a>
                 </li>
 
             </ul>

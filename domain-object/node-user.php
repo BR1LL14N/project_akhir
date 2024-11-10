@@ -3,8 +3,8 @@ class User{
     public $userId;
     public $username;
     public $allDataRole;
-    public $peranId;
-    public $password;
+    // public $peranId;
+    // public $password;
 
     public function __construct($userId,$username,role $allDataRole){
         $this->userId = $userId;

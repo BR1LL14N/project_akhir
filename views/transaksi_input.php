@@ -24,7 +24,7 @@
         <div class="flex-1 p-8">
             <!-- Form Transaksi -->
             <h2 class="text-2xl font-bold mb-4">Transaksi Baru</h2>
-            <form action="./index.php?modul=transaksi&fitur=add" method="POST" id="transaksiForm">
+            <form action="index.php?modul=transaksi&fitur=add" method="POST" id="transaksiForm">
                 <div class="mb-4">
                     <label for="customer" class="block text-gray-700">Customer</label>
                     <select id="customer" name="customer" class="mt-1 p-2 border border-gray-300 rounded w-1/3" required>
@@ -37,7 +37,7 @@
                         if (!empty($customers)) {
                             foreach ($customers as $customer) {
                                 // HANYA ID KASIR YANG DIJINKAN
-                                if($customer->allDataRole->id_peran == 3){
+                                if($customer->allDataRole->id_peran == 2){
                                     echo "<option value='{$customer->userId}'>{$customer->username}</option>";
 
                                 }
