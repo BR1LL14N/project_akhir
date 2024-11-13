@@ -15,7 +15,7 @@ class ModelTransaksi {
         $this->nextId = $this->getMaxTransaksiId() + 1;
     }
 
-    public function addTransaksi($user_id, $detail_transaksis) {
+    public function addTransaksi($user_id, $kasir,$detail_transaksis) {
         $user = $this->modelUser->getUserById($user_id);
 
         $transaksi_total = 0;
@@ -23,7 +23,7 @@ class ModelTransaksi {
             $transaksi_total += $detail->detailSubtotal;
         }
 
-        $transaksi = new Transaksi($this->nextId++, $user, $transaksi_total, $detail_transaksis);
+        $transaksi = new Transaksi($this->nextId++, $user, $transaksi_total, $kasir,$detail_transaksis);
         $this->modelTransaksi[] = $transaksi;
         $this->saveToSession();
     }

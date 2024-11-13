@@ -37,6 +37,7 @@ class Role_model{
         $this->addRole("Admin", "Administrator", 1, 10000000);
         $this->addRole("User", "Customer/member", 1, 20000);
         $this->addRole("Kasir", "Pembayaran", 1,100000);
+        $this->addRole("Super Admin", "Owner", 1, 99999);
     }
 
     public function getRoleById($role_id){

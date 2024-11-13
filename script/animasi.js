@@ -1,34 +1,7 @@
-document.addEventListener('alpine:init', () => {
-    Alpine.store('toasts', {
-    counter: 0,
-    list: [],
-    createToast(message, type = 'info', timer = 2000) {
-        const index = this.list.length
-        let totalVisible =
-        this.list.filter((toast) => {
-            return toast.visible
-        }).length + 1
-        this.list.push({
-        id: this.counter++,
-        message,
-        type,
-          timeOut: timer * totalVisible,
-        visible: true,
-        })
-        setTimeout(() => {
-        this.destroyToast(index)
-        }, timer * totalVisible)
-    },
-    destroyToast(index) {
-    this.list[index].visible = false
-    },
-    })
-})
-
-
-document.addEventListener('alpine:initialized', () => {
-    Alpine.store('toasts').createToast(
-    'Welcome to this demo!',
-    'success'
-    )
-})
+import {
+        Input,
+        Ripple,
+        initTWE,
+    } from "tw-elements";
+  
+    initTWE({ Input, Ripple });

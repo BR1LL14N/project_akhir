@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<?php 
-// var_dump($transaksis); 
-?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Transaksi</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Script untuk mengaktifkan modal -->
     <script>
         function openModal(id) {
             document.getElementById(id).classList.remove('hidden');
@@ -31,40 +27,42 @@
 
         <!-- Main Content -->
         <div class="flex-1 p-8">
-            <!-- Main Container for Transactions -->
             <div class="container mx-auto">
-                <!-- Transaksi Table -->
-                <div class="bg-white shadow-md rounded my-6">
-                    <table class="min-w-full bg-white grid-cols-1">
-                        <thead class="bg-gray-800 text-white">
-                            <tr>
-                                <th class="w-1/12 py-3 px-4 uppercase font-semibold text-sm">ID Transaksi</th>
-                                <th class="w-1/4 py-3 px-4 uppercase font-semibold text-sm">Customer</th>
-                                <th class="w-1/4 py-3 px-4 uppercase font-semibold text-sm">Kasir</th>
-                                <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Total</th>
-                                <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-gray-700">
-                            <?php if (!empty($transaksis)) {
-                                foreach ($transaksis as $transaksi) { ?>
-                            <tr class="text-center">
-                                <td class="py-3 px-4 text-blue-600"><?php echo htmlspecialchars($transaksi->transaksi_id); ?></td>
-                                <td class="w-1/4 py-3 px-4"><?php echo htmlspecialchars($transaksi->user->username); ?></td>
-                                <td class="w-1/4 py-3 px-4"><?php echo htmlspecialchars($transaksi->user->username); ?></td>
-                                <td class="w-1/6 py-3 px-4"><?php echo htmlspecialchars($transaksi->transaksi_total); ?></td>
-                                <td class="w-1/6 py-3 px-4">
-                                    <button
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
-                                        onclick="openModal('modal-<?php echo $transaksi->transaksi_id; ?>')">
-                                        View Details
-                                    </button>
-                                </td>
-                            </tr>
-                            <?php } } ?>
-                        </tbody>
-                    </table>
-                </div>
+                <?php if (!empty($transaksis)) { ?>
+                    <!-- Transaksi Table -->
+                    <div class="bg-white shadow-md rounded my-6">
+                        <table class="min-w-full bg-white">
+                            <thead class="bg-gray-800 text-white">
+                                <tr>
+                                    <th class="w-1/12 py-3 px-4 uppercase font-semibold text-sm">ID Transaksi</th>
+                                    <th class="w-1/4 py-3 px-4 uppercase font-semibold text-sm">Customer</th>
+                                    <th class="w-1/4 py-3 px-4 uppercase font-semibold text-sm">Kasir</th>
+                                    <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Total</th>
+                                    <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700">
+                                <?php foreach ($transaksis as $transaksi) { ?>
+                                    <tr class="text-center">
+                                        <td class="py-3 px-4 text-blue-600"><?php echo htmlspecialchars($transaksi->transaksi_id); ?></td>
+                                        <td class="w-1/4 py-3 px-4"><?php echo htmlspecialchars($transaksi->user->username); ?></td>
+                                        <td class="w-1/4 py-3 px-4"><?php echo htmlspecialchars($transaksi->kasir->username); ?></td>
+                                        <td class="w-1/6 py-3 px-4">Rp<?php echo number_format($transaksi->transaksi_total, 0, ',', '.'); ?></td>
+                                        <td class="w-1/6 py-3 px-4">
+                                            <button
+                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"
+                                                onclick="openModal('modal-<?php echo $transaksi->transaksi_id; ?>')">
+                                                View Details
+                                            </button>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php } else { ?>
+                    <p class="text-center text-gray-700 font-semibold text-lg mt-10">Tidak ada transaksi yang ditemukan.</p>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -85,7 +83,7 @@
                                 </tr>
                             </thead>
                             <tbody class="text-gray-700">
-                                <?php foreach ($transaksi->detail_transaksi as $index => $detail) { ?>
+                                <?php foreach ($transaksi->detail_transaksi as $detail) { ?>
                                     <tr class="text-center">
                                         <td class="py-3 px-4"><?php echo htmlspecialchars($detail->barang->nama_barang); ?></td>
                                         <td class="py-3 px-4"><?php echo htmlspecialchars($detail->detailJumlah); ?></td>

@@ -34,7 +34,7 @@ class User_model{
         return $maxid;
     }
 
-    public function addUser($user, $nameRole){
+    public function addUser($user, $nameRole, $password){
         $role = $this->roleModel->getRoleByName($nameRole);
 
 
@@ -53,7 +53,7 @@ class User_model{
         }
 
         // $ID = count($this->users) + 1;
-        $this->users[] = new User($this->nextID++,$user, $role);
+        $this->users[] = new User($this->nextID++,$user, $role, $password);
         $this->saveToSession();
         return true;
         
@@ -66,10 +66,11 @@ class User_model{
 
 
     public function InitilizedefaultUser(){
-        $this->addUser("Brillian", "Admin");
-        $this->addUser("Aril", "Kasir");
-        
-    
+        $this->addUser("Brillian", "Admin", 1234);
+        $this->addUser("Aril", "Kasir", 123);
+        $this->addUser("Rizam", "User", 135);
+        $this->addUser("Sora", "Super Admin", 5555);
+        // $this->addUser("Rizam", "User", 444);
 
     }
 
@@ -77,7 +78,7 @@ class User_model{
         return $this->users;
     }
 
-    public function updateUser($userID,$username, $nameRole){
+    public function updateUser($userID,$username, $nameRole, $password){
         $role = $this->roleModel->getRoleByName($nameRole);
         if(!$role){
             echo "<script>
@@ -94,6 +95,7 @@ class User_model{
         foreach($this->users as $key => $user){
             if($user->userId == $userID){
                 $user->username = $username;
+                $user->password = $password;
                 $user->allDataRole = $role;
                 // $this->users[$key] = new User($user->userId, $user->username, $role);
                 $this->saveToSession();
@@ -124,7 +126,18 @@ class User_model{
         return false;
     }
 
+    public function getUserByUsername($username){
+        foreach($this->users as $user){
+            if($user->username == $username){
+                return $user;
+            }
+        }
+        return false;
+    }
+
 }
+
+
 
 
 ?>

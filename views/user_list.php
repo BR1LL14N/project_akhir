@@ -47,6 +47,7 @@
                             <th class="w-1/12 py-3 px-4 font-semibold text-sm">User ID</th>
                             <th class="w-1/4 py-3 px-4 font-semibold text-sm">Username</th>
                             <th class="w-1/3 py-3 px-4 font-semibold text-sm">Role Name</th>
+                            <!-- <th class="w-1/3 py-3 px-4 font-semibold text-sm">Password</th> -->
                             <th class="w-1/6 py-3 px-4 font-semibold text-sm">Role Description</th>
                             <th class="w-1/6 py-3 px-4 font-semibold text-sm">Status</th>
                             <th class="w-1/6 py-3 px-4 font-semibold text-sm">Gaji</th>
@@ -64,9 +65,13 @@
                         <td class="w-1/4 py-3 px-4">
                             <?php echo htmlspecialchars($user->username); ?>
                         </td>
+                        
+
                         <td class="w-1/3 py-3 px-4">
                             <?php echo htmlspecialchars($user->allDataRole->nama_peran); ?>
                         </td>
+
+
                         <td class="w-1/3 py-3 px-4">
                             <?php echo htmlspecialchars($user->allDataRole->desc_peran); ?>
                         </td>

@@ -1,6 +1,11 @@
 <?php
 // MENG-START SESI
 session_start();
+
+if(!isset($_SESSION['login'])){
+    header("Location: login.php");
+    exit;
+}
 include './model/role_model.php';
 include './model/user_model.php';
 include './model/barang_model.php';
@@ -26,6 +31,12 @@ $obj_detail = new detailTransaksiModel();
 // YANG SUDAH DIKIRIMKAN
 switch($modul){
     case 'dashboard':
+        $roleID = $_SESSION['role_id'];
+        if($roleID == 1){
+            header("Location: index.php?modul=role");
+        }else if($roleID == 3){
+            header("Location: index.php?modul=transaksi&fitur=add");
+        }
         include 'views/kosong.php';
         break;
     
@@ -114,7 +125,8 @@ switch($modul){
                 if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     $user = $_POST['name'];
                     $nameRole = $_POST['role_status'];
-                    $result = $users->addUser($user, $nameRole);
+                    $password = $_POST['password'];
+                    $result = $users->addUser($user, $nameRole, $password);
                     if($result){
                         echo "<script>
                             alert('Data berhasil ditambahkan!');
@@ -141,7 +153,8 @@ switch($modul){
                     $userID = $_POST['id_user'];
                     $user = $_POST['name'];
                     $nameRole = $_POST['role_status'];
-                    $result = $users->updateUser($userID,$user, $nameRole);
+                    $password = $_POST['password'];
+                    $result = $users->updateUser($userID,$user, $nameRole, $password);
                     if($result){
                         echo "<script>
                             alert('Data berhasil diupdate!');
@@ -231,11 +244,14 @@ switch($modul){
                         break;
         
                 case 'add':
-                    $user_id = $_POST['customer'];
-                    $barang_ids = $_POST['barang'];
-                    $jumlahs = $_POST['jumlah'];
-                    $detail_transaksis = [];
-                    $nextId = 1; // Mulai ID dari 1 atau gunakan nilai yang sesuai untuk inisialisasi
+                    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                        $user_id = $_POST['customer'];
+                        $barang_ids = $_POST['barang'];
+                        $jumlahs = $_POST['jumlah'];
+                        $detail_transaksis = [];
+                        $nextId = 1; // Mulai ID dari 1 atau gunakan nilai yang sesuai untuk inisialisasi
+                        $kasir_username = $_SESSION['username'];
+                        $kasir = $obj_user->getUserByUsername($kasir_username);
 
                     foreach ($barang_ids as $key => $barang_id) {
                         $barang = $obj_barang->getBarangById($barang_id);
@@ -251,12 +267,16 @@ switch($modul){
                     }
 
                     if (!empty($detail_transaksis)) {
-                        $obj_transaksi->addTransaksi($user_id, $detail_transaksis);
+                        $obj_transaksi->addTransaksi($user_id, $kasir,$detail_transaksis);
                         header("Location: index.php?modul=transaksi&fitur=list");
                     } else {
                         echo "Detail transaksi tidak lengkap!";
                         exit;
                     }
+                    }else{
+                        header("Location: index.php?modul=transaksi");
+                    }
+                    
                     break;
                 case 'list':
                     $transaksis = $obj_transaksi->getAllTransaksi();

@@ -4,12 +4,13 @@ class User{
     public $username;
     public $allDataRole;
     // public $peranId;
-    // public $password;
+    public $password;
 
-    public function __construct($userId,$username,role $allDataRole){
+    public function __construct($userId,$username,role $allDataRole, $password){
         $this->userId = $userId;
         $this->username = $username;
         $this->allDataRole = $allDataRole;
+        $this->password = $password;
     }
 
     // public function __construct($userId,$username,$password,$peranId){
